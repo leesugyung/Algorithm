@@ -82,7 +82,7 @@ def dfs(sx,sy,shark_eat,shark_dir,board):
 
 
 
-sx, sy = 0, 0  #상어 위치
+sx, sy = 0, 0 #상어 위치
 max_eat = 0
 shark_eat, shark_dir = 0,0 
 dfs(sx,sy,shark_eat,shark_dir,board)
