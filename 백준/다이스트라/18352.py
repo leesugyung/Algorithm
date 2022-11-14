@@ -16,6 +16,8 @@ def dijstra(start):
     heapq.heappush(h, (0, start))
     road = [sys.maxsize]*(N+1)
     visited = [0]*(N+1)
+    road[start] = 0
+    check = 0
    
     while h:
         w, n = heapq.heappop(h)
@@ -24,14 +26,17 @@ def dijstra(start):
                 if road[i] > w + 1:
                     road[i] = w+1
                     if road[i] == K:
-                        result.append(i)
-                heapq.heappush(h, (road[i], i))
+                        heapq.heappush(result, i)
+                    elif road[i] > K:
+                        check = 1
+                    heapq.heappush(h, (road[i], i))
+        if check != 0:
+            break
         visited[n] = 1
 
 dijstra(X)
 if not result:
     print(-1)
 else:
-    result.sort()
-    for i in result:
-        print(i)
+    while result:
+        print(heapq.heappop(result))
